@@ -2,13 +2,13 @@ import Link from "next/link";
 import Button from "./button";
 import Image from "next/image";
 
-export default function Navbar() {
+export default function Navbar({logo = true}) {
     
     return (
-        <div className="flex items-center justify-between px-12 py-8">
+        <div className="flex items-center justify-between">
 
-            <div className="text-2xl font-bold">
-                <Link href="/home" className="flex items-center space-x-2">
+            {logo ? 
+                <Link href="/home" className="transition-opacity duration-200 hover:opacity-70 dark:invert flex items-center space-x-2">
                     <Image
                         src="/logo.png"
                         alt="Logo"
@@ -17,7 +17,9 @@ export default function Navbar() {
                         priority
                     />
                 </Link>
-            </div>
+            : <a></a>}
+                
+
 
             <div className="flex items-center gap-4">
                 <Button href="/catalogo" variant="text">CATÁLOGO</Button>
